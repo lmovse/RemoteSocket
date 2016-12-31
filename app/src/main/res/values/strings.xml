@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">智能插线板</string>
+    <string name="remote_ip">IP</string>
+    <string name="remote_port">Port</string>
+    <string name="error_invalid_ip">请输入正确的 IP 地址</string>
+    <string name="activity_login">TCP 连接</string>
+    <string name="remember_ip">记住 IP</string>
+    <string name="remote_connect">连接服务器</string>
+    <string name="socket1">S1</string>
+    <string name="socket2">S2</string>
+    <string name="socket3">S3</string>
+    <string name="socket4">S4</string>
+</resources>
