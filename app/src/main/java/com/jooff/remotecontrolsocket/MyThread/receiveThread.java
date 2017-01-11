@@ -13,8 +13,7 @@ import static com.jooff.remotecontrolsocket.MainActivity.mInputStream;
  * Created by Jooff on 2016/12/27.
  */
 
-public class receiveThread implements Runnable {
-
+public class ReceiveThread implements Runnable {
     private OnDataReceivedListener mOnDataReceivedListener;
 
     @Override
@@ -26,11 +25,9 @@ public class receiveThread implements Runnable {
                 int readSize = mInputStream.read(buffer);
                 sb.append(new String(buffer, 0, readSize));
                 Log.d(TAG, "run: " + sb.toString());
-
                 if (mOnDataReceivedListener != null){
                     mOnDataReceivedListener.onDataReceived(sb);
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

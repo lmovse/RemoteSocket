@@ -22,8 +22,7 @@ import rx.SingleSubscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class LoginActivity extends AppCompatActivity  {
-
+public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     public static Socket mSocket;
     private SharedPreferences pref;
@@ -53,8 +52,8 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
-    @OnClick(R.id.btn_login) void setLoginButton(){
-
+    @OnClick(R.id.btn_login)
+    void setLoginButton() {
         final String ip = ipText.getText().toString();
         final int port = Integer.valueOf(portText.getText().toString());
 
@@ -67,7 +66,6 @@ public class LoginActivity extends AppCompatActivity  {
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleSubscriber<Boolean>() {
-
                     @Override
                     public void onSuccess(Boolean value) {
                         Toast.makeText(LoginActivity.this, "已连接到 " + ip, Toast.LENGTH_SHORT).show();

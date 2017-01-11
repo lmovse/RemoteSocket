@@ -22,7 +22,7 @@ import static android.R.string.ok;
  * Created by Jooff on 2016/12/16.
  */
 
-public class TimePickerFragment extends DialogFragment {
+public class   TimePickerFragment extends DialogFragment {
 
     private static final String ARG_NAME = "relayName";
 
@@ -40,7 +40,6 @@ public class TimePickerFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_time, null);
         ButterKnife.bind(this, view);
 
@@ -50,7 +49,6 @@ public class TimePickerFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         TimeChoose choose = (TimeChoose) getActivity();
-
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             String relayName = getArguments().getString(ARG_NAME);
                             String hour = timeTwoNumber(String.valueOf(mTimePicker.getHour()));
