@@ -29,7 +29,7 @@
                 android:id="@+id/socket_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
                 />
 
             <ImageView
@@ -39,18 +39,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="90dp"
-                android:src="@drawable/ic_alarm_black_24dp"/>
+                android:src="@drawable/ic_alarm_black_24dp"
+                android:layout_marginLeft="90dp"/>
 
             <TextView
                 android:id="@+id/alarm_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-               />
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
 
             <android.support.v7.widget.SwitchCompat
+                android:layout_weight="1"
                 android:id="@+id/socket_switch"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 

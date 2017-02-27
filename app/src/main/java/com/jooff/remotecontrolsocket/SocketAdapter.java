@@ -5,6 +5,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,12 +30,35 @@ public class SocketAdapter extends RecyclerView.Adapter<SocketAdapter.SocketHold
         return new SocketHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rec_item, parent, false));
     }
 
+    public interface OnCheckChangeListener {
+        void onCheckChange(CompoundButton v, int position, boolean isChecked);
+    }
+
+    private OnCheckChangeListener onCheckChangeListener;
+
+    public void setOnCheckChangeListener(OnCheckChangeListener onCheckChangeListener) {
+        this.onCheckChangeListener = onCheckChangeListener;
+    }
+
     @Override
-    public void onBindViewHolder(SocketHolder holder, int position) {
+    public void onBindViewHolder(final SocketHolder holder, int position) {
         RemoteSocket rs = list.get(position);
         holder.mSocket.setImageResource(rs.getSocketImage());
         holder.socketNumber.setText(rs.getSocketName());
         holder.socketSwitch.setChecked(rs.getSwitchCompat());
+        if (onCheckChangeListener != null) {
+            holder.socketSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        holder.mSocket.setImageResource(R.drawable.ic_power_settings_new_black_24dp);
+                    } else {
+                        holder.mSocket.setImageResource(R.drawable.ic_power_settings_new_grey_500_24dp);
+                    }
+                    onCheckChangeListener.onCheckChange(buttonView, holder.getLayoutPosition(), isChecked);
+                }
+            });
+        }
     }
 
     @Override
@@ -56,7 +80,8 @@ public class SocketAdapter extends RecyclerView.Adapter<SocketAdapter.SocketHold
 
         SocketHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
+
 }

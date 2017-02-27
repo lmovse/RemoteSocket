@@ -1,35 +1,22 @@
 package com.jooff.remotecontrolsocket;
 
-import android.view.View;
-
 /**
  * Created by Jooff on 2017/1/11.
  */
 
 public class RemoteSocket {
     private int socketImage;
-    private int alarmImage;
     private String socketName;
-    private String alarmTime;
     private boolean mSwitchCompat;
+    private int alarmImage;
+    private String alarmTime;
 
-    public String getAlarmTime() {
-        return alarmTime;
+    public void setAlarmImage(int alarmImage) {
+        this.alarmImage = alarmImage;
     }
 
     public void setAlarmTime(String alarmTime) {
         this.alarmTime = alarmTime;
-    }
-
-    public int getAlarmImage() {
-        if (alarmImage == 0) {
-            return View.GONE;
-        }
-        else return View.VISIBLE;
-    }
-
-    public void setAlarmImage(int alarmImage) {
-        this.alarmImage = alarmImage;
     }
 
     public String getSocketName() {

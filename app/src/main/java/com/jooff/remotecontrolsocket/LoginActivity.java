@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,28 +22,21 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "LoginActivity";
     public static Socket mSocket;
     private SharedPreferences pref;
 
-    @Bind(R.id.input_ip)
-    EditText ipText;
-    @Bind(R.id.input_port)
-    EditText portText;
-    @Bind(R.id.remember_ip)
-    CheckBox ipRemember;
-    @BindString(R.string.error_invalid_ip)
-    String connectError;
+    @Bind(R.id.input_ip) EditText ipText;
+    @Bind(R.id.input_port) EditText portText;
+    @Bind(R.id.remember_ip) CheckBox ipRemember;
+    @BindString(R.string.error_invalid_ip) String connectError;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isRemember = pref.getBoolean("remember_ip", false);
-
         if (isRemember) {
             ipText.setText(pref.getString("ip", ""));
             portText.setText(String.valueOf(pref.getInt("port", 8080)));
@@ -56,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
     void setLoginButton() {
         final String ip = ipText.getText().toString();
         final int port = Integer.valueOf(portText.getText().toString());
-
         Single.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
@@ -73,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                             pref.edit().putBoolean("remember_ip", true).apply();
                             pref.edit().putString("ip", ip).apply();
                             pref.edit().putInt("port", port).apply();
-                            Log.d(TAG, "run: commit ok");
                         } else {
                             pref.edit().putBoolean("remember_ip", false).apply();
                         }
@@ -94,15 +84,5 @@ public class LoginActivity extends AppCompatActivity {
         LoginActivity.this.finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy: Destroy OK");
-    }
 }
 
