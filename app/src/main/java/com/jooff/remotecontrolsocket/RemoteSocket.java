@@ -8,16 +8,6 @@ public class RemoteSocket {
     private int socketImage;
     private String socketName;
     private boolean mSwitchCompat;
-    private int alarmImage;
-    private String alarmTime;
-
-    public void setAlarmImage(int alarmImage) {
-        this.alarmImage = alarmImage;
-    }
-
-    public void setAlarmTime(String alarmTime) {
-        this.alarmTime = alarmTime;
-    }
 
     public String getSocketName() {
         return socketName;

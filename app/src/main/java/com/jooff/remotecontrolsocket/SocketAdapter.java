@@ -82,6 +82,7 @@ public class SocketAdapter extends RecyclerView.Adapter<SocketAdapter.SocketHold
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+
     }
 
 }

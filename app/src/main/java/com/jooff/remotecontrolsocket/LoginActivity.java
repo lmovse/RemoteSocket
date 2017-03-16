@@ -13,7 +13,6 @@ import java.net.Socket;
 import java.util.concurrent.Callable;
 
 import butterknife.Bind;
-import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Single;
@@ -28,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     @Bind(R.id.input_ip) EditText ipText;
     @Bind(R.id.input_port) EditText portText;
     @Bind(R.id.remember_ip) CheckBox ipRemember;
-    @BindString(R.string.error_invalid_ip) String connectError;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(LoginActivity.this, connectError, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, R.string.error_invalid_ip, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
